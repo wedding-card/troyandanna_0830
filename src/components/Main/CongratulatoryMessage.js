@@ -3,7 +3,7 @@ import * as firebase from 'firebase/app';
 import shortid from 'shortid';
 import styled from 'styled-components';
 import { ReactComponent as SubmitIcon } from '../../assets/submit.svg';
-
+const randomEmoji = require('random-unicode-emoji');
 const S = {};
 S.Wrapper = styled.div`
   padding-top: 64px;
@@ -88,19 +88,21 @@ S.SubmitShadow = styled.div`
 `;
 const placeholder = `여기를 눌러 신랑 신부에게
 축하 메시지를 전해주세요
-`
+`;
+
 const CongratulatoryMessage = () => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
 
-  function writeUserData(name, comment) {
+  function writeUserData(name, comment, emoji) {
     if(!comment) return;
 
     const id = shortid.generate();
     firebase.database().ref('anna0803/comments/' + id).set({
       name,
       comment,
+      emoji,
       createTime : new Date().getTime()
     });
   }
@@ -117,7 +119,8 @@ const CongratulatoryMessage = () => {
   }
 
   function handleOnSubmit() {
-    writeUserData(name, comment);
+    const emoji = randomEmoji.random({ count : 1 })[0];
+    writeUserData(name, comment, emoji);
     setName('');
     setComment('');
   }
@@ -131,12 +134,12 @@ const CongratulatoryMessage = () => {
       <S.Header>축하 메시지</S.Header>
       <div>
       {
-        comments.map(({comment}) => {
+        comments.map(({emoji='✨', comment, createTime}) => {
           return (
-            <S.MessageWrapper>
-              <span>✨</span>
+            <S.MessageWrapper key={createTime}>
+              <span>{emoji}</span>
               <span>{comment}</span>
-              <span>✨</span>
+              <span>{emoji}</span>
             </S.MessageWrapper>
           );
         })

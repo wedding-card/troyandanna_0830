@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Image1 from "../../images/1.jpg";
 import Image2 from "../../images/2.jpg";
@@ -7,6 +7,8 @@ import Image4 from "../../images/4.jpg";
 import Image5 from "../../images/5.jpg";
 import Image6 from "../../images/6.jpg";
 import Image7 from "../../images/7.jpg";
+import ImageSlidePopup from "../commons/ImageSlidePopup";
+import ImageCarousel from "../commons/ImageCarousel";
 
 const S = {};
 S.PhotoWrapper = styled.div`
@@ -26,9 +28,9 @@ S.OurPhoro = styled.div`
 
 S.PhotoList = styled.div`
   margin-top: -12px;
-  padding-left: 50px;
+  margin-left: 60px;
   display: flex;
-  width: calc(100% - 50px);
+  width: calc(100vw - 60px);
   overflow: scroll;
   z-index: 1;
 `;
@@ -41,6 +43,8 @@ S.Image = styled.img`
 `;
 
 const Photo = () => {
+  const [open, setOpen] = useState(false);
+
   const images = [
     Image1,
     Image2,
@@ -54,15 +58,25 @@ const Photo = () => {
   return (
     <S.PhotoWrapper>
       <S.OurPhoro>our photo</S.OurPhoro>
-      <S.PhotoList>
-        <S.Image src={Image1} />
-        <S.Image src={Image2} />
-        <S.Image src={Image3} />
-        <S.Image src={Image4} />
-        <S.Image src={Image5} />
-        <S.Image src={Image6} />
-        <S.Image src={Image7} />
+      <S.PhotoList onClick={() => setOpen(true)}>
+        <ImageCarousel
+          width={'calc(100vw - 60px)'}
+          centerSlidePercentage={80}
+        >
+          <S.Image src={Image1} />
+          <S.Image src={Image2} />
+          <S.Image src={Image3} />
+          <S.Image src={Image4} />
+          <S.Image src={Image5} />
+          <S.Image src={Image6} />
+          <S.Image src={Image7} />
+        </ImageCarousel>
       </S.PhotoList>
+      <ImageSlidePopup
+        open={open}
+        onClose={() => setOpen(false)}
+        images={images}
+      />
     </S.PhotoWrapper>
   );
 };
