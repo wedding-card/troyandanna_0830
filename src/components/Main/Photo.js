@@ -32,14 +32,16 @@ S.PhotoList = styled.div`
   display: flex;
   width: calc(100vw - 60px);
   overflow: scroll;
+  scroll-snap-type: x proximity;
+  scroll-padding: 10px;
   z-index: 1;
 `;
 
 S.Image = styled.img`
-  flex: 1 0 240px;
   width: 240px;
   height: 362px;
   padding-left: 10px;
+  scroll-snap-align: center;
 `;
 
 const Photo = () => {
@@ -59,10 +61,6 @@ const Photo = () => {
     <S.PhotoWrapper>
       <S.OurPhoro>our photo</S.OurPhoro>
       <S.PhotoList onClick={() => setOpen(true)}>
-        <ImageCarousel
-          width={'calc(100vw - 60px)'}
-          centerSlidePercentage={80}
-        >
           <S.Image src={Image1} />
           <S.Image src={Image2} />
           <S.Image src={Image3} />
@@ -70,7 +68,6 @@ const Photo = () => {
           <S.Image src={Image5} />
           <S.Image src={Image6} />
           <S.Image src={Image7} />
-        </ImageCarousel>
       </S.PhotoList>
       <ImageSlidePopup
         open={open}

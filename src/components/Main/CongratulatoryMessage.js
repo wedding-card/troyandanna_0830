@@ -86,6 +86,10 @@ S.SubmitShadow = styled.div`
   border: 1px solid #9e9999;
   z-index: 2;
 `;
+S.More = styled.div`
+ text-align: right;
+ padding-right: 30px;
+`;
 const placeholder = `여기를 눌러 신랑 신부에게
 축하 메시지를 전해주세요
 `;
@@ -94,6 +98,7 @@ const CongratulatoryMessage = () => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
+  const [sliceNum, setSliceNum] = useState(5);
 
   function writeUserData(name, comment, emoji) {
     if(!comment) return;
@@ -114,7 +119,7 @@ const CongratulatoryMessage = () => {
           console.log(value)
           if(!value) return;
 
-          setComments(Object.values(value).map(val => val));
+          setComments(Object.values(value).map(val => val).sort((v1, v2) => v2.createTime - v1.createTime));
         });
   }
 
@@ -133,17 +138,20 @@ const CongratulatoryMessage = () => {
     <S.Wrapper>
       <S.Header>축하 메시지</S.Header>
       <div>
-      {
-        comments.map(({emoji='✨', comment, createTime}) => {
-          return (
-            <S.MessageWrapper key={createTime}>
-              <span>{emoji}</span>
-              <span>{comment}</span>
-              <span>{emoji}</span>
-            </S.MessageWrapper>
-          );
-        })
-      }
+        <S.More onClick={() => setSliceNum(comments.length + 1)}>
+          {(sliceNum < comments.length) ? '+ more' : ''}
+        </S.More>
+        {
+          comments.slice(0, sliceNum).map(({emoji='✨', comment, createTime}) => {
+            return (
+              <S.MessageWrapper key={createTime}>
+                <span>{emoji}</span>
+                <span>{comment}</span>
+                <span>{emoji}</span>
+              </S.MessageWrapper>
+            );
+          })
+        }
       </div>
 
       <S.InputWrapper>

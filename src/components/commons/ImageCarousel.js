@@ -22,11 +22,12 @@ const ImageCarousel = ({children, centerSlidePercentage=96, width="360px"}) => {
   };
   return (
     <MyCarousel
-        showArrows={false}
+      showArrows={false}
       showStatus={false}
       showIndicators={false}
       showThumbs={false}
       autoPlay={false}
+      dynamicHeight={false}
       useKeyboardArrows
       centerMode
       centerSlidePercentage={centerSlidePercentage}

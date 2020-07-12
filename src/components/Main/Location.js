@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import GoogleMap from "../commons/GoogleMap";
+import HallMap from "../../images/map.png";
 import DataTable from "../commons/DataTable";
 
 const S = {};
@@ -30,6 +30,11 @@ S.Address = styled.div`
 `;
 S.Transportation = styled.div`
 `;
+
+function openMap() {
+  window.open('https://map.naver.com/v5/search/%EC%82%BC%EC%84%B1%EA%B8%88%EC%9C%B5%EC%BA%A0%ED%8D%BC%EC%8A%A4/place/38339109?c=14139362.0993632,4507948.9858180,16,0,0,0,dh', '_blank');
+}
+
 const Location = () => {
   const address = `서울 서초구 사임당로23길 27 서초금융연수원
 (서초동 1641-10)`;
@@ -48,8 +53,8 @@ const Location = () => {
   return (
     <S.Wrapper>
       <S.Header>오시는 길</S.Header>
-      <S.GoogleMapWrapper>
-        <GoogleMap />
+      <S.GoogleMapWrapper onClick={openMap}>
+        <img src={HallMap} width={312} height={220} />
       </S.GoogleMapWrapper>
       <S.Address>{address}</S.Address>
       <S.Transportation>
