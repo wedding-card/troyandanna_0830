@@ -2,23 +2,27 @@
   "name": "wedding",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://wedding-card.github.io/anna-0830",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "firebase": "^7.15.5",
+    "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-id-swiper": "^4.0.0",
     "react-scripts": "3.4.1",
     "shortid": "^2.2.15",
+    "styled-components": "^5.1.1",
     "swiper": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
