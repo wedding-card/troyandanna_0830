@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import HallMap from "../../images/map.png";
+import HallMap from "../../images/map.jpg";
 import DataTable from "../commons/DataTable";
 
 const S = {};

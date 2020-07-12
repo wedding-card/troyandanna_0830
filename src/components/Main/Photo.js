@@ -33,7 +33,7 @@ S.PhotoList = styled.div`
   width: calc(100vw - 60px);
   overflow: scroll;
   scroll-snap-type: x proximity;
-  scroll-padding: 10px;
+  scroll-padding: -12px;
   z-index: 1;
 `;
 
@@ -41,7 +41,7 @@ S.Image = styled.img`
   width: 240px;
   height: 362px;
   padding-left: 10px;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
 `;
 
 const Photo = () => {
