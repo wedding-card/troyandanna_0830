@@ -6,13 +6,22 @@ import { ReactComponent as SubmitIcon } from '../../assets/submit.svg';
 const randomEmoji = require('random-unicode-emoji');
 const S = {};
 S.Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-top: 64px;
 `;
+
 S.Header = styled.div`
   font-size: 19px;
   font-weight: bold;
   color: #585151;
   text-align: center;
+`;
+S.List = styled.div`
+  width: 360px;
+  background-color: aquamarine;
 `;
 S.MessageWrapper = styled.div`
   font-size: 13px;
@@ -34,6 +43,7 @@ S.InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 360px;
   height: 120px;
   margin-top: 30px;
 `;
@@ -137,7 +147,7 @@ const CongratulatoryMessage = () => {
   return (
     <S.Wrapper>
       <S.Header>축하 메시지</S.Header>
-      <div>
+      <S.List>
         <S.More onClick={() => setSliceNum(comments.length + 1)}>
           {(sliceNum < comments.length) ? '+ more' : ''}
         </S.More>
@@ -152,7 +162,7 @@ const CongratulatoryMessage = () => {
             );
           })
         }
-      </div>
+      </S.List>
 
       <S.InputWrapper>
         <>

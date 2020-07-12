@@ -8,11 +8,11 @@ import Image5 from "../../images/5.jpg";
 import Image6 from "../../images/6.jpg";
 import Image7 from "../../images/7.jpg";
 import ImageSlidePopup from "../commons/ImageSlidePopup";
-import ImageCarousel from "../commons/ImageCarousel";
 
 const S = {};
 S.PhotoWrapper = styled.div`
   padding-top: 39px;
+  width: 360px;
 `;
 
 S.OurPhoro = styled.div`

@@ -19,7 +19,8 @@ S.Header = styled.div`
 `;
 
 S.GoogleMapWrapper = styled.div`
-  padding: 36px 24px 0 24px;
+  margin: 36px 24px 0 24px;
+  border: 1px solid #9e9999;
 `;
 S.Address = styled.div`
   padding: 24px 53px 0 53px;
@@ -27,6 +28,7 @@ S.Address = styled.div`
   line-height: 20px;
   color: #585151;
   text-align: center;
+  width: 254px;
 `;
 S.Transportation = styled.div`
 `;
