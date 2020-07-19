@@ -9,6 +9,7 @@ S.InvitationWrapper = styled.div`
   align-items: center;
   padding-top: 73px;
   padding-bottom: 34px;
+  width: 100%;
 `;
 
 S.Title = styled.div`
@@ -33,7 +34,7 @@ S.Message = styled.div`
   font-size: 13px;
   color: #585151;
   line-height: 25px;
-  white-space: break-spaces;
+  white-space: pre;
 `;
 
 S.FamilyInfo = styled.div`

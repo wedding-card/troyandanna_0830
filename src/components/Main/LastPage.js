@@ -20,7 +20,7 @@ S.Message = styled.div`
   font-size: 13px;
   color: #585151;
   line-height: 26px;
-  white-space: break-spaces;
+  white-space: pre;
 `;
 
 S.Date = styled.div`

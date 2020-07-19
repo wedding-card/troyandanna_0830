@@ -21,6 +21,16 @@ S.Header = styled.div`
 S.GoogleMapWrapper = styled.div`
   padding-top: 16px;
 `;
+S.HintMessage = styled.div`
+  font-size: 11px;
+  text-align: center;
+  color: #585151;  
+`;
+S.Image = styled.img`
+  width: 100vw;
+  height: calc(100vw * 0.77);
+`;
+
 S.Address = styled.div`
   padding: 24px 53px 0 53px;
   font-size: 13px;
@@ -33,6 +43,7 @@ S.Transportation = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
+  width: 100%;
 `;
 
 function openMap() {
@@ -58,7 +69,8 @@ const Location = () => {
     <S.Wrapper>
       <S.Header>오시는 길</S.Header>
       <S.GoogleMapWrapper onClick={openMap}>
-        <img src={HallMap} width={312} height={220} />
+        <S.Image src={HallMap} />
+        <S.HintMessage>지도를 클릭하시면 네이버 지도로 이동합니다</S.HintMessage>
       </S.GoogleMapWrapper>
       <S.Address>{address}</S.Address>
       <S.Transportation>

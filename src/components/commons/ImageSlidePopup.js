@@ -36,7 +36,7 @@ S.ImageWrapper = styled.div`
 const ImageSlidePopup = ({images, open, onClose}) => {
   return (
     <Popup
-        open={open}
+        open={open >= 0}
         modal
         contentStyle={{
           border: 0,
@@ -51,7 +51,7 @@ const ImageSlidePopup = ({images, open, onClose}) => {
           <img src={CloseImage} width={20} height={20} />
         </S.CloseButton>
         <div>
-          <ImageCarousel>
+          <ImageCarousel selectedItem={open}>
             {
               images.map((image, index) => {
                 return (

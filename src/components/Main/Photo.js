@@ -41,7 +41,7 @@ S.PhotoList = styled.div`
 
 S.Image = styled.img`
   width: 70%;
-  height: 362px;
+  height: 56%;
   padding-left: 10px;
   scroll-snap-align: center;  
   &:first-child {
@@ -71,16 +71,16 @@ const Photo = () => {
   return (
     <S.PhotoWrapper>
       <S.OurPhoro>our photo</S.OurPhoro>
-      <S.PhotoList onClick={() => setOpen(true)}>
+      <S.PhotoList>
         {
-          images.map((image) => {
-            return <S.Image src={image} />
+          images.map((image, index) => {
+            return <S.Image src={image} onClick={() => setOpen(index)}/>
           })
         }
       </S.PhotoList>
       <ImageSlidePopup
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={() => setOpen(-1)}
         images={images}
       />
     </S.PhotoWrapper>

@@ -18,7 +18,7 @@ S.WeddingHall = styled.div`
 `;
 const WeddingInformation = () => {
   const detailDate = '2020년 8월 30일 일요일 오후 3시';
-  const weddingHall = '삼성금융캠퍼스 지하 1층 비전홀';
+  const weddingHall = '삼성금융캠퍼스 지하 2층 비전홀';
   return (
     <>
       <S.DetailDate>{detailDate}</S.DetailDate>

@@ -29,6 +29,7 @@ S.Content = styled.div`
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
+  width: 100%;
 `;
 
 S.Next = styled.div`

@@ -29,12 +29,20 @@ S.MessageWrapper = styled.div`
   text-align: center;
   border: 1px solid #9e9999;
   width: calc(100% - 80px);
-  height: 25px;
+  min-height: 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 8px 30px;
   padding: 10px;
+`;
+S.Emoji = styled.div`
+  width: 40px;
+  text-align: center;
+`;
+S.Comment = styled.div`
+  width: 100%;
+  height: fit-content;
 `;
 
 S.InputWrapper = styled.div`
@@ -61,8 +69,11 @@ S.TextArea = styled.textarea`
   z-index: 2;
   &::placeholder {
     text-align: center;
+    word-break: keep-all;
+    white-space: pre;
   }
 `;
+
 S.TextAreaShadow = styled.div`
   border: 1px solid #9e9999;
   width: calc(100% - 60px);
@@ -96,8 +107,9 @@ S.SubmitShadow = styled.div`
   z-index: 2;
 `;
 S.More = styled.div`
- text-align: right;
- padding-right: 30px;
+ text-align: center;
+ padding-top: 36px;
+ font-size: 13px;
 `;
 const placeholder = `여기를 눌러 신랑 신부에게
 축하 메시지를 전해주세요
@@ -113,7 +125,8 @@ const CongratulatoryMessage = () => {
   // useEffect(() => {
   //   const commentList = [];
   //   for(let i=1; i< 32; i+=1) {
-  //     commentList.push({comment : '결혼 축하해' + i, createTime: i, emoji: randomEmoji()})
+  //     commentList.push({comment : '일이삼사오육칠팔구십일이삼사오육칠팔\n' +
+  //           '구십일이삼사오육칠팔구십일이삼사오육' + i, createTime: i, emoji: randomEmoji()})
   //   }
   //   setComments(commentList);
   // }, []);
@@ -178,15 +191,15 @@ const CongratulatoryMessage = () => {
           comments.slice(0, sliceNum * BASE_COUNT).map(({emoji='✨', comment, createTime}) => {
             return (
                 <S.MessageWrapper key={createTime}>
-                  <span>{emoji}</span>
-                  <span>{comment}</span>
-                  <span>{emoji}</span>
+                  <S.Emoji>{emoji}</S.Emoji>
+                  <S.Comment>{comment}</S.Comment>
+                  <S.Emoji>{emoji}</S.Emoji>
                 </S.MessageWrapper>
             );
           })
         }
         <S.More onClick={() => setSliceNum(sliceNum + 1)}>
-          {(sliceNum * BASE_COUNT <= comments.length) ? '더보기' + sliceNum + '/'+  comments.length : ''}
+          {(sliceNum * BASE_COUNT <= comments.length) ? '더보기' : ''}
         </S.More>
       </S.List>
     </S.Wrapper>

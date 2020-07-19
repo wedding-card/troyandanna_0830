@@ -10,7 +10,7 @@ S.Wrapper = styled.div`
   align-items: baseline;
   min-height: 20px;
   
-  @media (max-width: 360px) {
+  @media (max-width: 359px) {
     padding-left: 10px;
   }
 `;
@@ -24,13 +24,13 @@ S.Key = styled.div`
 `;
 
 S.Value = styled.div`
-  padding-left: 12px;
+  padding-left: 10px;
   line-height: 20px;
   font-size: 12px;
-  white-space: break-spaces;
+  white-space: pre;
   word-break: keep-all;
   
-  @media (max-width: 360px) {
+  @media (max-width: 359px) {
     padding-left: 6px;
   }
 `;

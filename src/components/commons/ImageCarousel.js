@@ -11,7 +11,7 @@ const MyCarousel = styled(Carousel)`
   }
 `;
 
-const ImageCarousel = ({children, centerSlidePercentage=96, width="360px"}) => {
+const ImageCarousel = ({selectedItem, children, centerSlidePercentage=96, width="360px"}) => {
   const arrowStyles = {
     position: 'absolute',
     zIndex: 2,
@@ -34,6 +34,7 @@ const ImageCarousel = ({children, centerSlidePercentage=96, width="360px"}) => {
       width={width}
       renderArrowPrev={(onClickHandler, hasPrev) => hasPrev && ( <img src={ArrowLeft} onClick={onClickHandler} style={{...arrowStyles, left: 15}} /> )}
       renderArrowNext={(onClickHandler, hasNext) => hasNext && ( <img src={ArrowRight} onClick={onClickHandler} style={{...arrowStyles, right: 15}} /> )}
+      selectedItem={selectedItem}
     >
       {children}
     </MyCarousel>
