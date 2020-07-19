@@ -9,6 +9,10 @@ S.Wrapper = styled.div`
   flex-direction: row;
   align-items: baseline;
   min-height: 20px;
+  
+  @media (max-width: 360px) {
+    padding-left: 10px;
+  }
 `;
 
 S.Key = styled.div`
@@ -24,6 +28,11 @@ S.Value = styled.div`
   line-height: 20px;
   font-size: 12px;
   white-space: break-spaces;
+  word-break: keep-all;
+  
+  @media (max-width: 360px) {
+    padding-left: 6px;
+  }
 `;
 
 const DataTable = ({name, value}) => {

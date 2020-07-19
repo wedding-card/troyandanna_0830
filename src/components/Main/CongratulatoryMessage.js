@@ -3,7 +3,7 @@ import * as firebase from 'firebase/app';
 import shortid from 'shortid';
 import styled from 'styled-components';
 import { ReactComponent as SubmitIcon } from '../../assets/submit.svg';
-const randomEmoji = require('random-unicode-emoji');
+import randomEmoji from '../../utils/random-emoji'
 const S = {};
 S.Wrapper = styled.div`
   display: flex;
@@ -21,7 +21,6 @@ S.Header = styled.div`
 `;
 S.List = styled.div`
   width: 360px;
-  background-color: aquamarine;
 `;
 S.MessageWrapper = styled.div`
   font-size: 13px;
@@ -53,7 +52,7 @@ S.TextArea = styled.textarea`
   font-size: 13px;
   line-height: 25px;
   color: #585151;
-  padding: 10px;
+  padding: 9px;
   border: 1px solid #9e9999;
   width: calc(100% - 80px);
   height: 60px;
@@ -104,11 +103,20 @@ const placeholder = `여기를 눌러 신랑 신부에게
 축하 메시지를 전해주세요
 `;
 
+const BASE_COUNT= 8;
 const CongratulatoryMessage = () => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
-  const [sliceNum, setSliceNum] = useState(5);
+  const [sliceNum, setSliceNum] = useState(1);
+
+  // useEffect(() => {
+  //   const commentList = [];
+  //   for(let i=1; i< 32; i+=1) {
+  //     commentList.push({comment : '결혼 축하해' + i, createTime: i, emoji: randomEmoji()})
+  //   }
+  //   setComments(commentList);
+  // }, []);
 
   function writeUserData(name, comment, emoji) {
     if(!comment) return;
@@ -134,7 +142,7 @@ const CongratulatoryMessage = () => {
   }
 
   function handleOnSubmit() {
-    const emoji = randomEmoji.random({ count : 1 })[0];
+    const emoji = randomEmoji();
     writeUserData(name, comment, emoji);
     setName('');
     setComment('');
@@ -147,22 +155,6 @@ const CongratulatoryMessage = () => {
   return (
     <S.Wrapper>
       <S.Header>축하 메시지</S.Header>
-      <S.List>
-        <S.More onClick={() => setSliceNum(comments.length + 1)}>
-          {(sliceNum < comments.length) ? '+ more' : ''}
-        </S.More>
-        {
-          comments.slice(0, sliceNum).map(({emoji='✨', comment, createTime}) => {
-            return (
-              <S.MessageWrapper key={createTime}>
-                <span>{emoji}</span>
-                <span>{comment}</span>
-                <span>{emoji}</span>
-              </S.MessageWrapper>
-            );
-          })
-        }
-      </S.List>
 
       <S.InputWrapper>
         <>
@@ -180,6 +172,23 @@ const CongratulatoryMessage = () => {
           <S.SubmitShadow />
         </>
       </S.InputWrapper>
+
+      <S.List>
+        {
+          comments.slice(0, sliceNum * BASE_COUNT).map(({emoji='✨', comment, createTime}) => {
+            return (
+                <S.MessageWrapper key={createTime}>
+                  <span>{emoji}</span>
+                  <span>{comment}</span>
+                  <span>{emoji}</span>
+                </S.MessageWrapper>
+            );
+          })
+        }
+        <S.More onClick={() => setSliceNum(sliceNum + 1)}>
+          {(sliceNum * BASE_COUNT <= comments.length) ? '더보기' + sliceNum + '/'+  comments.length : ''}
+        </S.More>
+      </S.List>
     </S.Wrapper>
   );
 };

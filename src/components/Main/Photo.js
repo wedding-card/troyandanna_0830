@@ -7,12 +7,16 @@ import Image4 from "../../images/4.jpg";
 import Image5 from "../../images/5.jpg";
 import Image6 from "../../images/6.jpg";
 import Image7 from "../../images/7.jpg";
+import Image8 from "../../images/8.jpg";
+import Image9 from "../../images/9.jpg";
+import Image10 from "../../images/10.jpg";
 import ImageSlidePopup from "../commons/ImageSlidePopup";
 
 const S = {};
 S.PhotoWrapper = styled.div`
   padding-top: 39px;
-  width: 360px;
+  width: 100vw;
+  overflow: hidden;
 `;
 
 S.OurPhoro = styled.div`
@@ -28,9 +32,7 @@ S.OurPhoro = styled.div`
 
 S.PhotoList = styled.div`
   margin-top: -12px;
-  margin-left: 60px;
   display: flex;
-  width: calc(100vw - 60px);
   overflow: scroll;
   scroll-snap-type: x proximity;
   scroll-padding: -12px;
@@ -38,10 +40,16 @@ S.PhotoList = styled.div`
 `;
 
 S.Image = styled.img`
-  width: 240px;
+  width: 70%;
   height: 362px;
   padding-left: 10px;
-  scroll-snap-align: start;
+  scroll-snap-align: center;  
+  &:first-child {
+    padding-left: 15%;
+  }
+  &:last-child {
+    padding-right: 15%;
+  }
 `;
 
 const Photo = () => {
@@ -55,19 +63,20 @@ const Photo = () => {
     Image5,
     Image6,
     Image7,
+    Image8,
+    Image9,
+    Image10,
   ];
 
   return (
     <S.PhotoWrapper>
       <S.OurPhoro>our photo</S.OurPhoro>
       <S.PhotoList onClick={() => setOpen(true)}>
-          <S.Image src={Image1} />
-          <S.Image src={Image2} />
-          <S.Image src={Image3} />
-          <S.Image src={Image4} />
-          <S.Image src={Image5} />
-          <S.Image src={Image6} />
-          <S.Image src={Image7} />
+        {
+          images.map((image) => {
+            return <S.Image src={image} />
+          })
+        }
       </S.PhotoList>
       <ImageSlidePopup
         open={open}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import HallMap from "../../images/map.jpg";
+import HallMap from "../../images/map.svg";
 import DataTable from "../commons/DataTable";
 
 const S = {};
@@ -19,8 +19,7 @@ S.Header = styled.div`
 `;
 
 S.GoogleMapWrapper = styled.div`
-  margin: 36px 24px 0 24px;
-  border: 1px solid #9e9999;
+  padding-top: 16px;
 `;
 S.Address = styled.div`
   padding: 24px 53px 0 53px;
@@ -31,6 +30,9 @@ S.Address = styled.div`
   width: 254px;
 `;
 S.Transportation = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 `;
 
 function openMap() {

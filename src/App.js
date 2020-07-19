@@ -14,46 +14,61 @@ import LastPage from "./components/Main/LastPage";
 const S = {};
 S.Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
+  width: 100vw;
+  height: 100%;
 `;
 
 S.Content = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f4f4f4;
-  overflow: hidden;
+  scroll-snap-align: start;
 `;
 
 S.Next = styled.div`
+  font-size: 9px;
+  color: #9e9999;
   width: 100%;
   display: flex;
   justify-content: center;
-  color: #9e9999;
-  font-size: 9px;
 `;
 function App() {
   return (
     <S.Wrapper>
       <S.Content>
         <Main />
-
-        <S.Next>
+        <S.Next onClick={() => { window.scrollTo({
+          top: 786,
+          left: 0,
+          behavior: 'smooth'
+        }) }}>
           <img src={NextImage} width={24} height={24}/>
         </S.Next>
-
+      </S.Content>
+      <S.Content>
         <Invitation />
 
         <S.Next>◆</S.Next>
+      </S.Content>
+      <S.Content>
         <Photo />
-
+      </S.Content>
+      <S.Content>
         <CongratulatoryMessage />
-
+      </S.Content>
+      <S.Content>
         <Location />
-
         <S.Next>
           <img src={DownArrpwImage} width={18} height={36} />
         </S.Next>
-
+      </S.Content>
+      <S.Content>
         <LastPage />
       </S.Content>
     </S.Wrapper>

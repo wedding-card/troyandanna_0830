@@ -48,7 +48,7 @@ function Main() {
       <S.Name>{groom} ㆍ {bride}</S.Name>
       <S.Message>{message}</S.Message>
       <S.ImageWrapper>
-        <img src={MainImage} width={304} height={459} />
+        <img src={MainImage} width={304} height={456} />
       </S.ImageWrapper>
       <WeddingInformation />
     </S.MainWrapper>
