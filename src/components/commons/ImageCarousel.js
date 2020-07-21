@@ -29,6 +29,7 @@ const ImageCarousel = ({selectedItem, children, centerSlidePercentage=96, width=
       autoPlay={false}
       dynamicHeight={false}
       useKeyboardArrows
+      emulateTouch
       centerMode
       centerSlidePercentage={centerSlidePercentage}
       width={width}

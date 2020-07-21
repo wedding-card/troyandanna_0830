@@ -71,6 +71,9 @@ S.TextArea = styled.textarea`
     text-align: center;
     word-break: keep-all;
     white-space: pre;
+    width: 160px;
+    padding-left: calc(50% - 80px);
+    line-height: 25px;
   }
 `;
 

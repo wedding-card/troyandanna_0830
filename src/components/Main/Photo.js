@@ -42,6 +42,8 @@ S.PhotoList = styled.div`
 S.Image = styled.img`
   width: 70%;
   height: 56%;
+  max-width: 360px;
+  max-height: 540px;
   padding-left: 10px;
   scroll-snap-align: center;  
   &:first-child {
@@ -53,7 +55,7 @@ S.Image = styled.img`
 `;
 
 const Photo = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(-1);
 
   const images = [
     Image1,

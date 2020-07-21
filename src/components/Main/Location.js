@@ -24,26 +24,37 @@ S.GoogleMapWrapper = styled.div`
 S.HintMessage = styled.div`
   font-size: 11px;
   text-align: center;
-  color: #585151;  
+  color: #9e9999;  
+  padding-top: 8px;
 `;
 S.Image = styled.img`
   width: 100vw;
   height: calc(100vw * 0.77);
+  max-width: 360px;
+  max-height: 277px;
 `;
 
 S.Address = styled.div`
-  padding: 24px 53px 0 53px;
-  font-size: 13px;
+  padding-top: 24px;
+  font-size: 15px;
   line-height: 20px;
   color: #585151;
   text-align: center;
-  width: 254px;
+  width: 293px;
+  word-break: keep-all;
 `;
+
 S.Transportation = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   width: 100%;
+  padding-top: 36px;
+  
+  @media (max-width: 359px) {
+    align-items: flex-start;
+    padding-left: 20px;
+  }
 `;
 
 function openMap() {
@@ -74,11 +85,13 @@ const Location = () => {
       </S.GoogleMapWrapper>
       <S.Address>{address}</S.Address>
       <S.Transportation>
+        <div>
         {
           data.map(({name, value}) => (
             <DataTable name={name} value={value} key={name} />
           ))
         }
+        </div>
       </S.Transportation>
     </S.Wrapper>
   );
